@@ -1,6 +1,6 @@
 # vehicles-platooning-elective-rob
 
-Project for Elective in Robotics: Control of Multi-Robot Systems ,2019-2020, Università Roma La Sapienza.
+Project for Elective in Robotics: Control of Multi-Robot Systems ,2019-2020, Università Roma La Sapienza. Course link https://sites.google.com/a/diag.uniroma1.it/cristofaro/teaching/cams.
 
 <a href="https://www.dis.uniroma1.it/"><img src="http://www.dis.uniroma1.it/sites/default/files/marchio%20logo%20eng%20jpg.jpg" width="500"></a>
 
