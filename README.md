@@ -1,4 +1,4 @@
-# hopping-robot-2D
+# vehicles-platooning-elective-rob
 
 Project for Elective in Robotics- Control of Multi-Robot Systems 2019-2020, Università La Sapienza Roma
 
