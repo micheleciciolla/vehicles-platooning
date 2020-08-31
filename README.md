@@ -11,9 +11,9 @@ Our goal is to implement and simulate the control model described in the followi
 * Di Bernardo, M., Salvi, A., & Santini, S. (2014). Distributed consensus strategy for platooning of vehicles in the presence of time-varying heterogeneous communication delays.IEEE Transactions on Intelligent Transportation Systems,16(1), 102-112
 
 Main aspects:
-1. A set of vehiclesthatare requiredto drive asa platoon
-2. Onlyfront and rearvehiclecommunicaEon
-3. Distanceand velocityconstraints
+1. A set of vehicles thatare required to drive as a platoon
+2. Only front and rear vehicle communication
+3. Distance and velocity constraints
 
 ## Running the test
 
