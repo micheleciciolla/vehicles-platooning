@@ -10,6 +10,11 @@ Our goal is to implement and simulate the control model described in the followi
 * Zegers, J. C., Semsar-Kazerooni, E., Ploeg, J., van de Wouw, N., & Nijmeijer, H. (2017). Consensus control for vehicular platooning with velocity constraints.IEEE Transactions on Control Systems Technology,26(5), 1592-1605
 * Di Bernardo, M., Salvi, A., & Santini, S. (2014). Distributed consensus strategy for platooning of vehicles in the presence of time-varying heterogeneous communication delays.IEEE Transactions on Intelligent Transportation Systems,16(1), 102-112
 
+Main aspects:
+1. A set of vehiclesthatare requiredto drive asa platoon
+2. Onlyfront and rearvehiclecommunicaEon
+3. Distanceand velocityconstraints
+
 ## Running the test
 
 ```
