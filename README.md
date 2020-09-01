@@ -34,3 +34,6 @@ TO-DO
 ## Documentation
 TO-DO
 
+## References
+[1] Truck-Platooning file exchange - Matworks (https://github.com/mathworks/Truck-Platooning)
+
