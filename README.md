@@ -1,4 +1,4 @@
-# vehicles-platooning-elective-rob
+# Elective in Robotics project: vehicles platooning
 
 Project for Elective in Robotics: [Control of Multi-Robot Systems](https://sites.google.com/a/diag.uniroma1.it/cristofaro/teaching/cams), 2019-2020, Università Roma La Sapienza.
 
