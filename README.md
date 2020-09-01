@@ -1,6 +1,6 @@
 # vehicles-platooning-elective-rob
 
-Project for Elective in Robotics: [Control of Multi-Robot Systems](https://sites.google.com/a/diag.uniroma1.it/cristofaro/teaching/cams) ,2019-2020, Università Roma La Sapienza.
+Project for Elective in Robotics: [Control of Multi-Robot Systems](https://sites.google.com/a/diag.uniroma1.it/cristofaro/teaching/cams), 2019-2020, Università Roma La Sapienza.
 
 <a href="https://www.dis.uniroma1.it/"><img src="http://www.dis.uniroma1.it/sites/default/files/marchio%20logo%20eng%20jpg.jpg" width="500"></a>
 
@@ -11,7 +11,7 @@ Our goal is to implement and simulate the control model described in the followi
 * Di Bernardo, M., Salvi, A., & Santini, S. (2014). Distributed consensus strategy for platooning of vehicles in the presence of time-varying heterogeneous communication delays.IEEE Transactions on Intelligent Transportation Systems,16(1), 102-112
 
 Main aspects:
-1. A set of vehicles thatare required to drive as a platoon
+1. A set of vehicles that are required to drive as a platoon
 2. Only front and rear vehicle communication
 3. Distance and velocity constraints
 
