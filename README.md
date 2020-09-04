@@ -19,7 +19,11 @@ Main aspects:
 2. Only front and rear vehicle communication
 3. Distance and velocity constraints
 
-[![Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)
+
+## Project status
+```bash
+In progress
+```
 
 ## Running the test
 
