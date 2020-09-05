@@ -1,15 +1,16 @@
 %% test
-M = 2000; % mass [kg] of each vehicle
-u = 1; % lin. velocity platoon input
+M = 1200; % mass [kg] of each vehicle
 
-% initial condition states [x y thehta psi]
-n0_init = [10 0 0 0];
-n1_init = [7 0 0 0];
-n2_init = [3 0 0 0];
-n3_init = [0 0 0 0];
-n4_init = [-3 0 0 0];
+% temporal inputs
+[u0,u1,u2,u3,u4] = deal(1,1,1,1,1);
+
+% initial condition states [r, v]
+n0_init = [0 0];
+n1_init = [-5 0];
+n2_init = [-10 0];
+n3_init = [-15 0];
+n4_init = [-20 0];
 
 simtime = 50;
 output = sim('model.slx',simtime);
-clc
 disp("------------ Completed ------------");
