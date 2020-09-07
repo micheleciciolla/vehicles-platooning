@@ -26,7 +26,6 @@ d2 = 3;
 d3 = 3;
 d4 = 2;
 
-
 % spacing policy
 h10 = 0.8; % [s]
 h20 = h10*2;
@@ -37,7 +36,6 @@ h40 = h10*4;
 k = 0.5; % (?)
 b = 0.5; % (?)
 
-
 % --------------------------------------------------------------
 %% SIMULATION
 
@@ -45,8 +43,9 @@ b = 0.5; % (?)
 % the leader imposes a constant fleet vel = u0 = 20 [m/s] = 72 [km/h]
 [u0,u1,u2,u3,u4] = deal(20,1,1,1,1);
 
-return
+
 % start simulation
 simtime = 50;
 output = sim('model.slx',simtime);
-disp("------------ Completed ------------");
+
+fprintf(2,"~\nProcess completed!\n~\n");
