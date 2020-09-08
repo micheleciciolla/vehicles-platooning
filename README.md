@@ -31,10 +31,10 @@ In progress
 Missing
 ```
 
+
 ## Video Demo
-```
-In progress
-```
+
+[![SC2 Video](./docs/demo.gif)](https://youtu.be/s0aRBQPnHzs) 
 
 ## Team
 * Michele Ciciolla <a href="https://github.com/micheleciciolla"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1024px-Octicons-mark-github.svg.png" width="30"></a>
