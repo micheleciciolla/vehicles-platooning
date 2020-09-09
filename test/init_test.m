@@ -36,8 +36,9 @@ d2 = 3;
 d3 = 3;
 d4 = 2;
 
+%% ho rimesso positivo
 % spacing policy
-h10 = -0.8; % [s]
+h10 = +0.8; % [s]
 h20 = h10*2;
 h30 = h10*3;
 h40 = h10*4;
@@ -45,13 +46,13 @@ h40 = h10*4;
 % stifness and damping coefficient
 % b, kij >0
 % maybe we should consider to have one coefficient for each car
-b = 400;
+b = 300;
 
 % individual params (to-do)
-k1 = 100;
-k2 = 100;
-k3 = 100;
-k4 = 100;
+k1 = 50;
+k2 = 50;
+k3 = 50;
+k4 = 30;
 
 % --------------------------------------------------------------
 %% SIMULATION
