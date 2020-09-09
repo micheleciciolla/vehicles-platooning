@@ -45,13 +45,13 @@ h40 = h10*4;
 % stifness and damping coefficient
 % b, kij >0
 % maybe we should consider to have one coefficient for each car
-b = 550;
+b = 400;
 
 % individual params (to-do)
-k1 = 120;
-k2 = 120;
-k3 = 120;
-k4 = 90;
+k1 = 100;
+k2 = 100;
+k3 = 100;
+k4 = 100;
 
 % --------------------------------------------------------------
 %% SIMULATION
@@ -91,7 +91,7 @@ err40 = out.err40;
 figure()
 hold on, grid minor
 plot(t,[err10,err20,err30,err40],'-.');
-legend('r1-r0-h10v0','r2-r0-h20v0','r3-r0-h30v0','r4-r0-h40v0');
+legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
 xlabel("time");
 ylabel("error");
 title("car distance error");
@@ -99,26 +99,26 @@ title("car distance error");
 % Printing final error
 disp("Final err1");
 disp(err10(end))
-if err10(end) > 0
+if round(err10(end),5) > 0
     fprintf(2," Error must be at least negative\n");
 end
 
 disp("Final err2");
 disp(err20(end))
-if err20(end) > 0
+if round(err20(end),5) > 0
     fprintf(2," Error must be at least negative\n");
 end
     
 
 disp("Final err3");
 disp(err30(end))
-if err30(end) > 0
+if round(err30(end),5) > 0
     fprintf(2," Error must be at least negative\n");
 end
 
 disp("Final err4");
 disp(err40(end))
-if err40(end) > 0
+if round(err40(end),5) > 0
     fprintf(2,"This error is not accettable : error must be at least negative,not positive\n");
 end
 
