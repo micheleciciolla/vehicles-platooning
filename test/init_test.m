@@ -7,7 +7,7 @@ catch
 end
 
 
-    close all
+close all
 
 %% PARAMETERS
 M = 1200; % mass [kg] of each vehicle
@@ -64,9 +64,8 @@ u0 = 20;
 simtime = 200;
 out = sim('model.slx',simtime);
 
-fprintf(2,"~\nProcess completed!\n~\n");
-
 clc
+fprintf(2,"~\nProcess completed!\n~\n");
 
 %% Getting data from Simulink - state variable structure
 t = out.r0.time;
