@@ -49,9 +49,9 @@ b = 550;
 
 % individual params (to-do)
 k1 = 120;
-k2 = 0;
-k3 = 0;
-k4 = 0;
+k2 = 120;
+k3 = 120;
+k4 = 90;
 
 % --------------------------------------------------------------
 %% SIMULATION
@@ -97,8 +97,19 @@ xlabel("time");
 ylabel("error");
 title("car distance error");
 
+% Printing final error
 disp("Final err1");
 disp(err10(end))
+
+disp("Final err2");
+disp(err20(end))
+
+disp("Final err3");
+disp(err30(end))
+
+disp("Final err4");
+disp(err40(end))
+
 
 
 
