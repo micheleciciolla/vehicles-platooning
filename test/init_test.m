@@ -99,16 +99,28 @@ title("car distance error");
 % Printing final error
 disp("Final err1");
 disp(err10(end))
+if err10(end) > 0
+    fprintf(2," Error must be at least negative\n");
+end
 
 disp("Final err2");
 disp(err20(end))
+if err20(end) > 0
+    fprintf(2," Error must be at least negative\n");
+end
+    
 
 disp("Final err3");
 disp(err30(end))
+if err30(end) > 0
+    fprintf(2," Error must be at least negative\n");
+end
 
 disp("Final err4");
 disp(err40(end))
-
+if err40(end) > 0
+    fprintf(2,"This error is not accettable : error must be at least negative,not positive\n");
+end
 
 
 
