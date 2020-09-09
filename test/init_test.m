@@ -13,7 +13,7 @@ close all
 M = 1200; % mass [kg] of each vehicle
 
 % initial condition states [r, v] - STEADY STATE
-n0_init = [0 0];
+n0_init = [0 20];
 n1_init = [-3 0];
 n2_init = [-8 0];
 n3_init = [-13 0];
@@ -58,7 +58,7 @@ k4 = 90;
 
 % the leader imposes a constant fleet vel = u0 = 20 [m/s] = 72 [km/h]
 % this is a constant VELOCITY input
-u0 = 20;
+u0 = 0;
 
 % start simulation
 simtime = 200;
