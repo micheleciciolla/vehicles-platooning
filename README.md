@@ -5,9 +5,7 @@ Project for Elective in Robotics: [Control of Multi-Robot Systems](https://sites
 <a href="https://www.dis.uniroma1.it/"><img src="http://www.dis.uniroma1.it/sites/default/files/marchio%20logo%20eng%20jpg.jpg" width="500"></a>
 
 ## Approach
-Our goal is simulate the control model described in one of the following papers:
-* Paoletti, P., & Innocenti, G. (2015). Effects of nearest neighborsinteractions on control of nonlinear vehicular platooning. European Control Conference (ECC)(pp. 2991-2996)
-* Zegers, J. C., Semsar-Kazerooni, E., Ploeg, J., van de Wouw, N., & Nijmeijer, H. (2017). Consensus control for vehicular platooning with velocity constraints.IEEE Transactions on Control Systems Technology,26(5), 1592-1605
+Our goal is simulate the control model described the following resarch paper:
 *  **Di Bernardo, M., Salvi, A., & Santini, S. (2014). Distributed consensus strategy for platooning of vehicles in the presence of time-varying heterogeneous communication delays.IEEE Transactions on Intelligent Transportation Systems,16(1), 102-112**
 
 
@@ -49,6 +47,6 @@ Missing
 ```
 
 ## References
-[1] Truck-Platooning file exchange - Matworks (https://github.com/mathworks/Truck-Platooning)
+[1] M. di Bernardo, A. Salvi and S. Santini, "Distributed Consensus Strategy for Platooning of Vehicles in the Presence of Time-Varying Heterogeneous Communication Delays, Feb. 2015
 
 
