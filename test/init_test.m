@@ -1,11 +1,10 @@
-try
-    cd /home/mic-ciciolla/Documents/università/incompleted/elective/4_multirobot/vehicles-platooning/test
-    disp("directory changed");
-catch
-    return
-
-end
-
+% try
+%    cd /home/mic-ciciolla/Documents/università/incompleted/elective/4_multirobot/vehicles-platooning/test
+%    disp(">> directory changed");
+% catch
+%    return
+% 
+% end
 
 close all
 
@@ -13,11 +12,11 @@ close all
 M = 1200; % mass [kg] of each vehicle
 
 % initial condition states [r, v] - STEADY STATE
-n0_init = [0 20];
-n1_init = [-3 0];
-n2_init = [-8 0];
-n3_init = [-13 0];
-n4_init = [-18 0];
+n0_init = [100 20];
+n1_init = [80 0];
+n2_init = [60 0];
+n3_init = [40 0];
+n4_init = [20 0];
 
 % adjacency matrix
 % N = 4
@@ -36,33 +35,38 @@ d2 = 3;
 d3 = 3;
 d4 = 2;
 
-%% ho rimesso positivo
+%% ho rimesso negativo
 % spacing policy
-h10 = +0.8; % [s]
+h10 = -0.8; % [s]
 h20 = h10*2;
 h30 = h10*3;
 h40 = h10*4;
 
 % stifness and damping coefficient
 % b, kij >0
-% maybe we should consider to have one coefficient for each car
-b = 300;
+b = 2000;
 
-% individual params (to-do)
-k1 = 50;
-k2 = 50;
-k3 = 50;
-k4 = 30;
+% individual params
+k1 = 1600;
+k2 = 1500;
+k3 = 1400;
+k4 = 1100;
 
 % --------------------------------------------------------------
 %% SIMULATION
 
 % the leader imposes a constant fleet vel = u0 = 20 [m/s] = 72 [km/h]
-% this is a constant VELOCITY input
+% this is a constant VELOCITY, our input is accelleration
+
+% per qualche strano motivo non sono m/s ma ogni 1000 di u sono 0.8m/s (e
+% vuoi vedere che dipende dallo spacing policy? me ne sto accorgendo mentre
+% te lo scrivo calcola ahah)no ok --> NON DIPENDE DALLO SPACING POLICY ho
+% fatto le prove, per cui le u nel grafico degli input sono ragionevoli
 u0 = 0;
+fleet_vel = 20;
 
 % start simulation
-simtime = 200;
+simtime = 400;
 out = sim('model.slx',simtime);
 
 clc
@@ -89,13 +93,14 @@ err20 = out.err20;
 err30 = out.err30;
 err40 = out.err40;
 
-figure()
-hold on, grid minor
-plot(t,[err10,err20,err30,err40],'-.');
-legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
-xlabel("time");
-ylabel("error");
-title("car distance error");
+% figure()
+% hold on, grid minor
+% plot(t,[err10,err20,err30,err40],'--.','LineWidth',0.1);
+% legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
+% xlim([-5,simtime+10])
+% xlabel("time");
+% ylabel("error");
+% title("car distance error");
 
 % Printing final error
 disp("Final err1");
@@ -110,7 +115,6 @@ if round(err20(end),5) > 0
     fprintf(2," Error must be at least negative\n");
 end
     
-
 disp("Final err3");
 disp(err30(end))
 if round(err30(end),5) > 0
