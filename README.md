@@ -22,13 +22,13 @@ Main aspects:
 
 ## Project status
 ```bash
-In progress
+Almost done
 ```
 
 ## Running the test
 
 ```
-Missing
+run init_test.m
 ```
 
 
