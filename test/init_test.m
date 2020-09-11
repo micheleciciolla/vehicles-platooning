@@ -1,12 +1,81 @@
-% try
-%    cd /home/mic-ciciolla/Documents/università/incompleted/elective/4_multirobot/vehicles-platooning/test
-%    disp(">> directory changed");
-% catch
-%    return
-% 
-% end
-
+%% This form will be useful when simulating with the driving scenario
 close all
+
+%% CRUISE VELOCITY v0
+fleet_vel = 20;
+%% NOISE ON r0
+noise = 1;
+%% SIMULATION TIME 
+simtime = 200;
+
+%% CALL THE SIMULATION
+out = simulate(fleet_vel,noise,simtime);
+
+%% CREATE PLOTS
+usefulplots(out,simtime);
+
+%% ------- functions -------
+
+function [] = usefulplots(out,simtime)
+
+%% Getting data from Simulink - state variable structure
+t = out.r0.time;
+dim = size(t);
+
+r0 = out.r0.signals.values;
+r1 = out.r1;
+r2 = out.r2;
+r3 = out.r3;
+r4 = out.r4;
+
+v0 = out.v0;
+v1 = out.v1;
+v2 = out.v2;
+v3 = out.v3;
+v4 = out.v4;
+
+err10 = out.err10;
+err20 = out.err20;
+err30 = out.err30;
+err40 = out.err40;
+
+figure()
+hold on, grid minor
+plot(t,[err10,err20,err30,err40],'--','LineWidth',0.1);
+legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
+xlim([-5,simtime+10])
+xlabel("time");
+ylabel("error");
+title("car distance error");
+
+% Printing final error
+disp("Final err1");
+disp(err10(end))
+if round(err10(end),5) > 0
+    fprintf(2," Error must be at least negative\n");
+end
+
+disp("Final err2");
+disp(err20(end))
+if round(err20(end),5) > 0
+    fprintf(2," Error must be at least negative\n");
+end
+    
+disp("Final err3");
+disp(err30(end))
+if round(err30(end),5) > 0
+    fprintf(2," Error must be at least negative\n");
+end
+
+disp("Final err4");
+disp(err40(end))
+if round(err40(end),5) > 0
+    fprintf(2,"This error is not accettable : error must be at least negative,not positive\n");
+end
+
+end
+
+function out = simulate(fleet_vel,noise,simtime)
 
 %% PARAMETERS
 M = 1200; % mass [kg] of each vehicle
@@ -63,68 +132,13 @@ k4 = 1100;
 % te lo scrivo calcola ahah)no ok --> NON DIPENDE DALLO SPACING POLICY ho
 % fatto le prove, per cui le u nel grafico degli input sono ragionevoli
 u0 = 0;
-fleet_vel = 20;
 
 % start simulation
-simtime = 400;
 out = sim('model.slx',simtime);
 
 clc
 fprintf(2,"~\nProcess completed!\n~\n");
 
-%% Getting data from Simulink - state variable structure
-t = out.r0.time;
-dim = size(t);
-
-r0 = out.r0.signals.values;
-r1 = out.r1;
-r2 = out.r2;
-r3 = out.r3;
-r4 = out.r4;
-
-v0 = out.v0;
-v1 = out.v1;
-v2 = out.v2;
-v3 = out.v3;
-v4 = out.v4;
-
-err10 = out.err10;
-err20 = out.err20;
-err30 = out.err30;
-err40 = out.err40;
-
-% figure()
-% hold on, grid minor
-% plot(t,[err10,err20,err30,err40],'--.','LineWidth',0.1);
-% legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
-% xlim([-5,simtime+10])
-% xlabel("time");
-% ylabel("error");
-% title("car distance error");
-
-% Printing final error
-disp("Final err1");
-disp(err10(end))
-if round(err10(end),5) > 0
-    fprintf(2," Error must be at least negative\n");
-end
-
-disp("Final err2");
-disp(err20(end))
-if round(err20(end),5) > 0
-    fprintf(2," Error must be at least negative\n");
-end
-    
-disp("Final err3");
-disp(err30(end))
-if round(err30(end),5) > 0
-    fprintf(2," Error must be at least negative\n");
-end
-
-disp("Final err4");
-disp(err40(end))
-if round(err40(end),5) > 0
-    fprintf(2,"This error is not accettable : error must be at least negative,not positive\n");
 end
 
 
