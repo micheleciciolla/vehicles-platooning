@@ -9,7 +9,68 @@ noise = 1;
 simtime = 200;
 
 %% CALL THE SIMULATION
-out = simulate(fleet_vel,noise,simtime);
+%% PARAMETERS
+M = 1200; % mass [kg] of each vehicle
+
+% initial condition states [r, v] - STEADY STATE
+n0_init = [100 20];
+n1_init = [80 0];
+n2_init = [60 0];
+n3_init = [40 0];
+n4_init = [20 0];
+
+% adjacency matrix
+% N = 4
+% NB. i=[2...4] (?)
+% NB. j=[1...5] (?)
+% i<j=i+1
+
+A = zeros(5,5);
+A(2:end ,1) = ones(4,1);
+A(3,2) = 1; A(4,3) = 1; A(5,4) = 1;
+
+% degree of agents i
+d0 = 4;
+d1 = 2;
+d2 = 3;
+d3 = 3;
+d4 = 2;
+
+%% ho rimesso negativo
+% spacing policy
+h10 = -0.8; % [s]
+h20 = h10*2;
+h30 = h10*3;
+h40 = h10*4;
+
+% stifness and damping coefficient
+% b, kij >0
+b = 2000;
+
+% individual params
+k1 = 1600;
+k2 = 1500;
+k3 = 1400;
+k4 = 1100;
+
+% --------------------------------------------------------------
+%% SIMULATION
+
+% the leader imposes a constant fleet vel = u0 = 20 [m/s] = 72 [km/h]
+% this is a constant VELOCITY, our input is accelleration
+
+% per qualche strano motivo non sono m/s ma ogni 1000 di u sono 0.8m/s (e
+% vuoi vedere che dipende dallo spacing policy? me ne sto accorgendo mentre
+% te lo scrivo calcola ahah)no ok --> NON DIPENDE DALLO SPACING POLICY ho
+% fatto le prove, per cui le u nel grafico degli input sono ragionevoli
+u0 = 0;
+
+% start simulation
+
+out = sim('model.slx',simtime);
+
+clc
+fprintf(2,"~\nProcess completed!\n~\n");
 
 %% CREATE PLOTS
 usefulplots(out,simtime);
@@ -75,71 +136,7 @@ end
 
 end
 
-function out = simulate(fleet_vel,noise,simtime)
 
-%% PARAMETERS
-M = 1200; % mass [kg] of each vehicle
-
-% initial condition states [r, v] - STEADY STATE
-n0_init = [100 20];
-n1_init = [80 0];
-n2_init = [60 0];
-n3_init = [40 0];
-n4_init = [20 0];
-
-% adjacency matrix
-% N = 4
-% NB. i=[2...4] (?)
-% NB. j=[1...5] (?)
-% i<j=i+1
-
-A = zeros(5,5);
-A(2:end ,1) = ones(4,1);
-A(3,2) = 1; A(4,3) = 1; A(5,4) = 1;
-
-% degree of agents i
-d0 = 4;
-d1 = 2;
-d2 = 3;
-d3 = 3;
-d4 = 2;
-
-%% ho rimesso negativo
-% spacing policy
-h10 = -0.8; % [s]
-h20 = h10*2;
-h30 = h10*3;
-h40 = h10*4;
-
-% stifness and damping coefficient
-% b, kij >0
-b = 2000;
-
-% individual params
-k1 = 1600;
-k2 = 1500;
-k3 = 1400;
-k4 = 1100;
-
-% --------------------------------------------------------------
-%% SIMULATION
-
-% the leader imposes a constant fleet vel = u0 = 20 [m/s] = 72 [km/h]
-% this is a constant VELOCITY, our input is accelleration
-
-% per qualche strano motivo non sono m/s ma ogni 1000 di u sono 0.8m/s (e
-% vuoi vedere che dipende dallo spacing policy? me ne sto accorgendo mentre
-% te lo scrivo calcola ahah)no ok --> NON DIPENDE DALLO SPACING POLICY ho
-% fatto le prove, per cui le u nel grafico degli input sono ragionevoli
-u0 = 0;
-
-% start simulation
-out = sim('model.slx',simtime);
-
-clc
-fprintf(2,"~\nProcess completed!\n~\n");
-
-end
 
 
 
