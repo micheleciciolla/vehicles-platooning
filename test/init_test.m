@@ -1,4 +1,4 @@
-%% This form will be useful when simulating with the driving scenario
+%% ELECTIVE IN ROBOTICS (2B section) PROJECT - CICIOLLA, BUSTAMANTE JULCA
 close all
 
 %% CRUISE VELOCITY v0
@@ -6,7 +6,7 @@ fleet_vel = 20;
 %% NOISE ON r0
 noise = 1;
 %% SIMULATION TIME 
-simtime = 100;
+simtime = 50;
 
 %% CALL THE SIMULATION
 
@@ -14,17 +14,13 @@ simtime = 100;
 M = 1200; % mass [kg] of each vehicle
 
 % initial condition states [r, v] - STEADY STATE
-n0_init = [100 20];
-n1_init = [80 0];
-n2_init = [60 0];
-n3_init = [40 0];
-n4_init = [20 0];
+n0_init = [0 20];
+n1_init = [-10 0];
+n2_init = [-20 0];
+n3_init = [-30 0];
+n4_init = [-40 0];
 
 % adjacency matrix
-% N = 4
-% NB. i=[2...4] (?)
-% NB. j=[1...5] (?)
-% i<j=i+1
 
 A = zeros(5,5);
 A(2:end ,1) = ones(4,1);
@@ -46,30 +42,23 @@ h40 = h10*4;
 
 % stifness and damping coefficient
 % b, kij >0
-b = 2000;
+b = 2*10^5;
 
 % individual params
-k1 = 1600;
-k2 = 1500;
-k3 = 1400;
-k4 = 1100;
+k1 = 1.7*10^5;
+k2 = 1.8*10^5;
+k3 = 1.8*10^5;
+k4 = 1.2*10^5;
 
 % --------------------------------------------------------------
 %% SIMULATION
 
 % the leader imposes a constant fleet vel = u0 = 20 [m/s] = 72 [km/h]
 % this is a constant VELOCITY, our input is accelleration
-
-% per qualche strano motivo non sono m/s ma ogni 1000 di u sono 0.8m/s (e
-% vuoi vedere che dipende dallo spacing policy? me ne sto accorgendo mentre
-% te lo scrivo calcola ahah)no ok --> NON DIPENDE DALLO SPACING POLICY ho
-% fatto le prove, per cui le u nel grafico degli input sono ragionevoli
 u0 = 0;
 
 % start simulation
-
 out = sim('model.slx',simtime);
-
 clc
 fprintf(2,"~\nProcess completed!\n~\n");
 
@@ -104,14 +93,14 @@ err20 = out.err20;
 err30 = out.err30;
 err40 = out.err40;
 
-figure()
-hold on, grid minor
-plot(t,[err10,err20,err30,err40],'--','LineWidth',0.1);
-legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
-xlim([-5,simtime+10])
-xlabel("time");
-ylabel("error");
-title("car distance error");
+% figure()
+% hold on, grid minor
+% plot(t,[err10,err20,err30,err40],'--','LineWidth',0.1);
+% legend('r_1-r_0- h_{10}v_0','r_2-r_0- h_{20}v_0','r_3-r_0- h_{30}v_0','r_4-r_0- h_{40}v_0');
+% xlim([-5,simtime+10])
+% xlabel("time");
+% ylabel("error");
+% title("car distance error");
 
 % Printing final error
 disp("Final err1");
@@ -144,7 +133,7 @@ function [] = animation(out)
 
 % FIGURE 6 - ANIMATION
 figure()
-grid minor, hold on
+grid off, hold on
 ylim([-0.1,0.1]);
 
 % leader drawing

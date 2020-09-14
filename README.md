@@ -20,7 +20,7 @@ Main aspects:
 
 ## Project status
 ```bash
-Almost done
+Completed
 ```
 
 ## Running the test
