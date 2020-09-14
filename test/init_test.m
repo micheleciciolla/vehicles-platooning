@@ -6,9 +6,10 @@ fleet_vel = 20;
 %% NOISE ON r0
 noise = 1;
 %% SIMULATION TIME 
-simtime = 200;
+simtime = 100;
 
 %% CALL THE SIMULATION
+
 %% PARAMETERS
 M = 1200; % mass [kg] of each vehicle
 
@@ -75,6 +76,9 @@ fprintf(2,"~\nProcess completed!\n~\n");
 %% CREATE PLOTS
 usefulplots(out,simtime);
 
+%% CREATE ANIMATION
+animation(out);
+
 %% ------- functions -------
 
 function [] = usefulplots(out,simtime)
@@ -133,6 +137,111 @@ disp(err40(end))
 if round(err40(end),5) > 0
     fprintf(2,"This error is not accettable : error must be at least negative,not positive\n");
 end
+
+end
+
+function [] = animation(out)
+
+% FIGURE 6 - ANIMATION
+figure()
+grid minor, hold on
+ylim([-0.1,0.1]);
+
+% leader drawing
+t = out.r0.time;
+dim = size(t);
+r0 = out.r0.signals.values;
+
+anim_leader = animatedline;
+anim_leader.Marker = '>';
+anim_leader.MarkerSize = 20;
+anim_leader.MarkerFaceColor = 'k';
+anim_leader.LineStyle = 'none';
+anim_leader.LineWidth=0.1;
+anim_leader.Color = 'k';
+
+% follower 1
+r1 = out.r1;
+
+anim_follower1 = animatedline;
+anim_follower1.Marker = '>';
+anim_follower1.MarkerSize = 20;
+anim_follower1.MarkerFaceColor = 'r';
+anim_follower1.LineStyle = 'none';
+anim_follower1.LineWidth=0.1;
+anim_follower1.Color = 'r';
+
+% follower 2
+r2 = out.r2;
+
+anim_follower2 = animatedline;
+anim_follower2.Marker = '>';
+anim_follower2.MarkerSize = 20;
+anim_follower2.MarkerFaceColor = 'g';
+anim_follower2.LineStyle = 'none';
+anim_follower2.LineWidth=0.1;
+anim_follower2.Color = 'g';
+
+% follower 3
+r3 = out.r3;
+
+anim_follower3 = animatedline;
+anim_follower3.Marker = '>';
+anim_follower3.MarkerSize = 20;
+anim_follower3.MarkerFaceColor = 'b';
+anim_follower3.LineStyle = 'none';
+anim_follower3.LineWidth=0.1;
+anim_follower3.Color = 'b';
+
+% follower 4
+r4 = out.r4;
+
+anim_follower4 = animatedline;
+anim_follower4.Marker = '>';
+anim_follower4.MarkerSize = 20;
+anim_follower4.MarkerFaceColor = 'magenta';
+
+anim_follower4.LineStyle = 'none';
+anim_follower4.LineWidth=0.1;
+anim_follower4.Color = 'magenta';
+
+% road line
+
+anim_line = animatedline;
+anim_line.Color = 'k';
+
+anim_line2 = animatedline;
+anim_line2.Color = 'k';
+
+xlabel("meters");
+title("Animation of platoon");
+legend("leader","node1","node2","node3","node4");
+
+
+for i = 1:10:length(t)
+    clearpoints(anim_leader)
+    clearpoints(anim_follower1)
+    clearpoints(anim_follower2)
+    clearpoints(anim_follower3)
+    clearpoints(anim_follower4)
+
+    addpoints(anim_leader,r0(i),0);
+    addpoints(anim_follower1,r1(i),0);
+    addpoints(anim_follower2,r2(i),0);
+    addpoints(anim_follower3,r3(i),0);
+    addpoints(anim_follower4,r4(i),0);
+    
+    addpoints(anim_line,i,-0.02);
+    addpoints(anim_line2,i,+0.02);
+  
+    xlim([r4(i)-10,r0(i)+10]);
+
+
+    drawnow;
+    pause(.1);
+end
+
+
 
 end
 
