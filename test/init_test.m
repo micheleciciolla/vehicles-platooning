@@ -4,7 +4,7 @@ close all
 %% CRUISE VELOCITY v0
 fleet_vel = 20;
 %% NOISE ON r0
-noise = 1;
+noise = 0;
 %% SIMULATION TIME 
 simtime = 50;
 
@@ -202,8 +202,12 @@ anim_line.Color = 'k';
 anim_line2 = animatedline;
 anim_line2.Color = 'k';
 
+anim_line3 = animatedline;
+anim_line3.Color = 'k';
+anim_line3.LineStyle = "--";
+
 xlabel("meters");
-title("Animation of platoon");
+title("Animation of the platoon");
 legend("leader","node1","node2","node3","node4");
 
 
@@ -213,6 +217,10 @@ for i = 1:10:length(t)
     clearpoints(anim_follower2)
     clearpoints(anim_follower3)
     clearpoints(anim_follower4)
+    
+    addpoints(anim_line,i,-0.02);
+    addpoints(anim_line2,i,+0.02);
+    addpoints(anim_line3,i,0);
 
     addpoints(anim_leader,r0(i),0);
     addpoints(anim_follower1,r1(i),0);
@@ -220,14 +228,11 @@ for i = 1:10:length(t)
     addpoints(anim_follower3,r3(i),0);
     addpoints(anim_follower4,r4(i),0);
     
-    addpoints(anim_line,i,-0.02);
-    addpoints(anim_line2,i,+0.02);
   
     xlim([r4(i)-10,r0(i)+10]);
 
-
     drawnow;
-    pause(.1);
+    
 end
 
 
