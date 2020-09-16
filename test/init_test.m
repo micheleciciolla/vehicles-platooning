@@ -5,7 +5,7 @@ close all
 fleet_vel = 20;
 %% NOISE ON r0
 noise = 1;
-%% SIMULATION TIME 
+%% SIMULATION TIME
 simtime = 200;
 
 %% CALL THE SIMULATION
@@ -67,7 +67,7 @@ fprintf(2,"~\nProcess completed!\n~\n");
 usefulplots(out,simtime);
 
 %% CREATE ANIMATION
-animation(out);
+animation(out,noise);
 
 %% ------- functions -------
 
@@ -115,7 +115,7 @@ disp(err20(end))
 if round(err20(end),5) > 0
     fprintf(2," Error must be at least negative\n");
 end
-    
+
 disp("Final err3");
 disp(err30(end))
 if round(err30(end),5) > 0
@@ -130,7 +130,15 @@ end
 
 end
 
-function [] = animation(out)
+function [] = animation(out,noise)
+
+if noise
+    disp("Animation is starting");
+    disp("at t=50 sinusoidal noise will affect the leader");
+else disp("Animation is starting");
+end
+
+pause(3);
 
 % FIGURE 6 - ANIMATION
 figure()
@@ -211,6 +219,8 @@ xlabel("meters");
 title("Animation of the platoon");
 legend("leader","node1","node2","node3","node4");
 
+% used for noise alert below
+flag = 1;
 
 for i = 1:10:length(t)
     clearpoints(anim_leader)
@@ -221,24 +231,38 @@ for i = 1:10:length(t)
     
     addpoints(anim_line,i,-0.02);
     addpoints(anim_line2,i,+0.02);
-    addpoints(anim_line3,i,0);
-
+    % addpoints(anim_line3,i,0);
+    
     addpoints(anim_leader,r0(i),0);
     addpoints(anim_follower1,r1(i),0);
     addpoints(anim_follower2,r2(i),0);
     addpoints(anim_follower3,r3(i),0);
     addpoints(anim_follower4,r4(i),0);
     
-  
+    
     xlim([r4(i)-10,r0(i)+10]);
-
+    
+    %     % pause(0.01)
+    
+    % This part below enables noise alert on the animation
+    
+    %
+    %     % Ts = 0.01 so t = 50 is 5000th
+    %     if i>5000 && flag && noise
+    %         anim_leader.MarkerFaceColor = 'r';
+    %         flag = 0;
+    %
+    %         title("Animation of the platoon - noise");
+    %         legend("noisy leader","node1","node2","node3","node4");
+    %     else
+    %         anim_leader.MarkerFaceColor = 'k';
+    %         flag = 1;
+    %     end
+    
     drawnow;
-    pause(0.01)
+    
     
 end
-
-
-
 end
 
 
