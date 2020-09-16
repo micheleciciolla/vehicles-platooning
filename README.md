@@ -19,9 +19,8 @@ Main aspects:
 
 
 ## Project status
-```bash
 Completed <a href="https://github.com/micheleciciolla/vehicles-platooning"><img src="https://www.flaticon.com/svg/static/icons/svg/214/214353.svg" width="30"></a>
-```
+
 
 ## Running the test
 
