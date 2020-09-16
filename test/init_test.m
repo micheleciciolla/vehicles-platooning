@@ -4,9 +4,9 @@ close all
 %% CRUISE VELOCITY v0
 fleet_vel = 20;
 %% NOISE ON r0
-noise = 0;
+noise = 1;
 %% SIMULATION TIME 
-simtime = 50;
+simtime = 200;
 
 %% CALL THE SIMULATION
 
@@ -61,6 +61,7 @@ u0 = 0;
 out = sim('model.slx',simtime);
 clc
 fprintf(2,"~\nProcess completed!\n~\n");
+
 
 %% CREATE PLOTS
 usefulplots(out,simtime);
@@ -232,6 +233,7 @@ for i = 1:10:length(t)
     xlim([r4(i)-10,r0(i)+10]);
 
     drawnow;
+    pause(0.01)
     
 end
 

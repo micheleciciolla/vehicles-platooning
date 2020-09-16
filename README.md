@@ -42,9 +42,7 @@ run init_test.m
 
 
 ## Documentation
-```
-Missing
-```
+You can read our final technical documentation about this project here [DOCUMENTATION](./docs/presentation-report.pdf)
 
 ## References
 [1] M. di Bernardo, A. Salvi and S. Santini, "Distributed Consensus Strategy for Platooning of Vehicles in the Presence of Time-Varying Heterogeneous Communication Delays, Feb. 2015
