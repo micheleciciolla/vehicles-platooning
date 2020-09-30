@@ -1,5 +1,7 @@
 # Elective in Robotics project: vehicles platooning
 
+![Puppet Forge endorsement](https://img.shields.io/puppetforge/e/camptocamp/openssl?color=light%20green&label=Ubuntu%2016.04%20LTS&logo=Ubuntu)
+
 Project for Elective in Robotics: [Control of Multi-Robot Systems](https://sites.google.com/a/diag.uniroma1.it/cristofaro/teaching/cams), 2019-2020, Università Roma La Sapienza.
 
 <a href="https://www.dis.uniroma1.it/"><img src="http://www.dis.uniroma1.it/sites/default/files/marchio%20logo%20eng%20jpg.jpg" width="500"></a>
