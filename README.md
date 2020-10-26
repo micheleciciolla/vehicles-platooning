@@ -1,4 +1,4 @@
-# Elective in Robotics project: vehicles platooning
+# A distributed consensus controller for platooning of vehicles in presence of communication delays
 
 ![Puppet Forge endorsement](https://img.shields.io/puppetforge/e/camptocamp/openssl?color=light%20green&label=Ubuntu%2016.04%20LTS&logo=Ubuntu)
 
